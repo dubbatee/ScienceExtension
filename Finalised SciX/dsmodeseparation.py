@@ -15,7 +15,7 @@ DistLMC = 49590
 
 #SMC Dataframes
 
-Fundamentalsmcds = cleansmcds
+Fundamentalsmcds = cleansmcds.drop(cleansmcds[cleansmcds['P2'] != (-99.99)].index)
 
 FirstOvertonesmcds = cleansmcds.drop(cleansmcds[cleansmcds['mode'] == ('singlemode')].index)
 
@@ -25,11 +25,11 @@ Fundamentallmcds = cleanlmcds.drop(cleanlmcds[cleanlmcds['P2'] != (-99.99)].inde
 
 FirstOvertonelmcds = cleanlmcds.drop(cleanlmcds[cleanlmcds['mode'] == ('singlemode')].index)
 
-#print(len(Fundamentalsmcds))
-#print(len(FirstOvertonesmcds))
+print(len(Fundamentalsmcds))
+print(len(FirstOvertonesmcds))
 
-#print(len(Fundamentallmcds))
-#print(len(FirstOvertonelmcds))
+print(len(Fundamentallmcds))
+print(len(FirstOvertonelmcds))
 
 ### Generating P-L Relations, Absolute Magnitude (M) vs log Period (logP) ###
 
@@ -101,7 +101,7 @@ plt.ylabel('Absolute I-band Mag')
 LOBF = [i * m + n for i in x]
 plt.plot(x, LOBF, color = "red")
 plt.text(-0.6, -4, 'y = ' + format(m.round(3)) + 'logP ' + "+ " + format(n.round(3)))
-plt.title('SMC Fundamental Mode M vs logP')
+plt.title('SMC First Overtone M vs logP')
 plt.ylim(-6, 4)
 plt.xlim(-1.6,-0.4)
 plt.show()
@@ -119,7 +119,7 @@ plt.ylabel('Absolue I-band Mag')
 LOBF = [i * k + l for i in q]
 plt.plot(q, LOBF, color = "red")
 plt.text(-0.9, 13, 'y = ' + format(k.round(3)) + 'logP ' + "x " + format(l.round(3)))
-plt.title('LMC Fundamental Mode M vs logP')
+plt.title('LMC First Overtone M vs logP')
 plt.ylim(-6, 4)
 plt.xlim(-1.6,-0.4)
 plt.show()
