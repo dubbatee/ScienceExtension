@@ -53,27 +53,27 @@ def LMCperror(dist):
 ### Distance Return ###
 
 # Fundamental Mode SMC Distances
-print("SMC Fund Dist")
+print("SMC Fund Dists")
 print(SMCperror(statistics.median(FundLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 print(SMCperror(statistics.median(FOLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 
 # Fundamental Mode LMC Distances
-#print("LMC Fund Dist")
-#print(LMCperror(statistics.median(FundLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
-#print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print("LMC Fund Dists")
+print(LMCperror(statistics.median(FundSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
+print(LMCperror(statistics.median(FOSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
+print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
 
 # First Overtone SMC Distances
-#print("SMC FO Dist")
-#print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
-#print(SMCperror(statistics.median(FOSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
-
+print("SMC FO Dists")
+print(SMCperror(statistics.median(FundSMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print(SMCperror(statistics.median(FundLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print(SMCperror(statistics.median(FOLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+ 
 # First Overtone LMC Distances
-#print("SMC FO Dist")
-#print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
-#print(LMCperror(statistics.median(FOLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print("LMC FO Dists")
+print(LMCperror(statistics.median(FundSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print(LMCperror(statistics.median(FOSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
 
 
