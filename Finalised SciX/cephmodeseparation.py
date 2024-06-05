@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import statistics
 from scipy import stats
 
-from dsdatasetgeneration import cleanlmcds, cleansmcds 
+from cephdatasetgeneration import cleanlmcceph, cleansmcceph 
 
 ### Distances to the LMC and SMC ### Used to Generate the P-L Relations
 
@@ -15,21 +15,21 @@ DistLMC = 49590
 
 #SMC Dataframes
 
-Fundamentalsmcds = cleansmcds.drop(cleansmcds[cleansmcds['P2'] != (-99.99)].index)
+Fundamentalsmcceph = cleansmcceph.drop(cleansmcceph[cleansmcceph['mode'] != ('F')].index)
 
-FirstOvertonesmcds = cleansmcds.drop(cleansmcds[cleansmcds['mode'] == ('singlemode')].index)
+FirstOvertonesmcceph = cleansmcceph.drop(cleansmcceph[cleansmcceph['mode'] == ('F')].index)
 
 #LMC Dataframes
 
-Fundamentallmcds = cleanlmcds.drop(cleanlmcds[cleanlmcds['P2'] != (-99.99)].index)
+Fundamentallmcceph = cleanlmcceph.drop(cleanlmcceph[cleanlmcceph['mode'] != ('F')].index)
 
-FirstOvertonelmcds = cleanlmcds.drop(cleanlmcds[cleanlmcds['mode'] == ('singlemode')].index)
+FirstOvertonelmcceph = cleanlmcceph.drop(cleanlmcceph[cleanlmcceph['mode'] == ('F')].index)
 
-print(len(Fundamentalsmcds))
-print(len(FirstOvertonesmcds))
+#print((Fundamentalsmcceph))
+#print(len(FirstOvertonesmcceph))
 
-print(len(Fundamentallmcds))
-print(len(FirstOvertonelmcds))
+#print(len(Fundamentallmcceph))
+#print(len(FirstOvertonelmcceph))
 
 ### Generating P-L Relations, Absolute Magnitude (M) vs log Period (logP) ###
 
@@ -53,8 +53,8 @@ def Mlmc(I):
 # Fundamental Mode P-L Relations
 
 #SMC P-L Relationship 
-y = ((Msmc(Fundamentalsmcds['I'])).tolist())
-x = ((logperiod(Fundamentalsmcds['P1'])).tolist())
+y = ((Msmc(Fundamentalsmcceph['I'])).tolist())
+x = ((logperiod(Fundamentalsmcceph['P1'])).tolist())
 
 plt.scatter(x, y)
 a, b = np.polyfit(x, y, 1)
@@ -62,17 +62,15 @@ plt.xlabel('Log10 of Period(days)')
 plt.ylabel('Absolute I-band Mag')
 LOBF = [i * a + b for i in x]
 plt.plot(x, LOBF, color = "red")
-plt.text(-0.6, -4, 'y = ' + format(a.round(3)) + 'logP ' + "+ " + format(b.round(3)))
+#plt.text(-0.6, -4, 'y = ' + format(a.round(3)) + 'logP ' + "+ " + format(b.round(3)))
 plt.title('SMC Fundamental Mode M vs logP')
-plt.ylim(-6, 4)
-plt.xlim(-1.6,-0.4)
 plt.show()
 
 
 
 #LMC P-L Relationship
-w = ((Mlmc(Fundamentallmcds['I'])).tolist())
-q = ((logperiod(Fundamentallmcds['P1'])).tolist())
+w = ((Mlmc(Fundamentallmcceph['I'])).tolist())
+q = ((logperiod(Fundamentallmcceph['P1'])).tolist())
 
 plt.scatter(q, w)
 c, d = np.polyfit(q, w, 1)
@@ -80,10 +78,8 @@ plt.xlabel('Log10 of Period(days)')
 plt.ylabel('Absolue I-band Mag')
 LOBF = [i * c + d for i in q]
 plt.plot(q, LOBF, color = "red")
-plt.text(-0.9, 13, 'y = ' + format(c.round(3)) + 'logP ' + "x " + format(d.round(3)))
+#plt.text(-0.9, 13, 'y = ' + format(c.round(3)) + 'logP ' + "x " + format(d.round(3)))
 plt.title('LMC Fundamental Mode M vs logP')
-plt.ylim(-6, 4)
-plt.xlim(-1.6,-0.4)
 plt.show()
 
 
@@ -91,8 +87,8 @@ plt.show()
 # First Overtone P-L Relations
 
 #SMC P-L Relationship 
-y = ((Msmc(FirstOvertonesmcds['I'])).tolist())
-x = ((logperiod(FirstOvertonesmcds['P2'])).tolist())
+y = ((Msmc(FirstOvertonesmcceph['I'])).tolist())
+x = ((logperiod(FirstOvertonesmcceph['P1'])).tolist())
 
 plt.scatter(x, y)
 m, n = np.polyfit(x, y, 1)
@@ -100,17 +96,15 @@ plt.xlabel('Log10 of Period(days)')
 plt.ylabel('Absolute I-band Mag')
 LOBF = [i * m + n for i in x]
 plt.plot(x, LOBF, color = "red")
-plt.text(-0.6, -4, 'y = ' + format(m.round(3)) + 'logP ' + "+ " + format(n.round(3)))
+#plt.text(-0.6, -4, 'y = ' + format(m.round(3)) + 'logP ' + "+ " + format(n.round(3)))
 plt.title('SMC First Overtone M vs logP')
-plt.ylim(-6, 4)
-plt.xlim(-1.6,-0.4)
 plt.show()
 
 
 
 #LMC P-L Relationship
-w = ((Mlmc(FirstOvertonelmcds['I'])).tolist())
-q = ((logperiod(FirstOvertonelmcds['P2'])).tolist())
+w = ((Mlmc(FirstOvertonelmcceph['I'])).tolist())
+q = ((logperiod(FirstOvertonelmcceph['P1'])).tolist())
 
 plt.scatter(q, w)
 k, l = np.polyfit(q, w, 1)
@@ -118,12 +112,6 @@ plt.xlabel('Log10 of Period(days)')
 plt.ylabel('Absolue I-band Mag')
 LOBF = [i * k + l for i in q]
 plt.plot(q, LOBF, color = "red")
-plt.text(-0.9, 13, 'y = ' + format(k.round(3)) + 'logP ' + "x " + format(l.round(3)))
+#plt.text(-0.9, 13, 'y = ' + format(k.round(3)) + 'logP ' + "x " + format(l.round(3)))
 plt.title('LMC First Overtone M vs logP')
-plt.ylim(-6, 4)
-plt.xlim(-1.6,-0.4)
 plt.show()
-
-
-
-

@@ -52,28 +52,55 @@ def LMCperror(dist):
 
 ### Distance Return ###
 
+# Distances derived from modelling data #
+
 # Fundamental Mode SMC Distances
-print("SMC Fund Dist")
+print("SMC Fund Dists")
 print(SMCperror(statistics.median(FundLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 print(SMCperror(statistics.median(FOLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
 
 # Fundamental Mode LMC Distances
-#print("LMC Fund Dist")
-#print(LMCperror(statistics.median(FundLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
-#print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print("LMC Fund Dists")
+print(LMCperror(statistics.median(FundSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
+print(LMCperror(statistics.median(FOSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
+print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
 
 # First Overtone SMC Distances
-#print("SMC FO Dist")
-#print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(SMCperror(statistics.median(FOSMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
-#print(SMCperror(statistics.median(FOSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
-
+print("SMC FO Dists")
+print(SMCperror(statistics.median(FundSMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print(SMCperror(statistics.median(FundLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print(SMCperror(statistics.median(FOLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+ 
 # First Overtone LMC Distances
-#print("SMC FO Dist")
-#print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentalsmcds['I'], Fundamentalsmcds['P1']))))
-#print(LMCperror(statistics.median(FOLMCdsDistance(Fundamentallmcds['I'], Fundamentallmcds['P1']))))
-#print(LMCperror(statistics.median(FOLMCdsDistance(FirstOvertonesmcds['I'], FirstOvertonesmcds['P2']))))
+print("LMC FO Dists")
+print(LMCperror(statistics.median(FundSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print(LMCperror(statistics.median(FundLMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
+print(LMCperror(statistics.median(FOSMCdsDistance(FirstOvertonelmcds['I'], FirstOvertonelmcds['P2']))))
 
+### Intragalactic Distances ###
+
+#importing dataframes#
+
+from intragen import Fundamentalblgds, FirstOvertoneblgds, Fundamentaldiskds, FirstOvertonediskds
+
+# Accuracy Function #
+
+def star_dist_accuracy(modeldist, truedist):
+    return modeldist/truedist*100
+
+Fundamentalblgds['modeldist'] = FundSMCdsDistance(Fundamentalblgds['I'], Fundamentalblgds['P1'])
+
+FirstOvertoneblgds['modeldist'] = FundSMCdsDistance(FirstOvertoneblgds['I'], FirstOvertoneblgds['P2'])
+
+Fundamentaldiskds['modeldist'] = FundSMCdsDistance(Fundamentaldiskds['I'], Fundamentaldiskds['P1'])
+
+FirstOvertonediskds['modeldist'] = FundSMCdsDistance(FirstOvertonediskds['I'], FirstOvertonediskds['P2'])
+
+print(statistics.mean(star_dist_accuracy(Fundamentalblgds['modeldist'], Fundamentalblgds['truedist'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertoneblgds['modeldist'], FirstOvertoneblgds['truedist'])))
+print(statistics.mean(star_dist_accuracy(Fundamentaldiskds['modeldist'], Fundamentaldiskds['truedist'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertonediskds['modeldist'], FirstOvertonediskds['truedist'])))
+
+### Intergalactic Distances ###
 
