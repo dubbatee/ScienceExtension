@@ -97,10 +97,10 @@ Fundamentaldiskds['modeldist'] = FundSMCdsDistance(Fundamentaldiskds['I'], Funda
 
 FirstOvertonediskds['modeldist'] = FundSMCdsDistance(FirstOvertonediskds['I'], FirstOvertonediskds['P2'])
 
-print(statistics.mean(star_dist_accuracy(Fundamentalblgds['modeldist'], Fundamentalblgds['distance'])))
-print(statistics.mean(star_dist_accuracy(FirstOvertoneblgds['modeldist'], FirstOvertoneblgds['distance'])))
-print(statistics.mean(star_dist_accuracy(Fundamentaldiskds['modeldist'], Fundamentaldiskds['distance'])))
-print(statistics.mean(star_dist_accuracy(FirstOvertonediskds['modeldist'], FirstOvertonediskds['distance'])))
+print(statistics.mean(star_dist_accuracy(Fundamentalblgds['modeldist'], Fundamentalblgds['Distance'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertoneblgds['modeldist'], FirstOvertoneblgds['Distance'])))
+print(statistics.mean(star_dist_accuracy(Fundamentaldiskds['modeldist'], Fundamentaldiskds['Distance'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertonediskds['modeldist'], FirstOvertonediskds['Distance'])))
 
 ### Intergalactic Distances ###
 
