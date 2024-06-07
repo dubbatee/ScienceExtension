@@ -95,9 +95,9 @@ Fundamentaldiskceph['modeldist'] = FundSMCcephDistance(Fundamentaldiskceph['I'],
 
 FirstOvertonediskceph['modeldist'] = FundSMCcephDistance(FirstOvertonediskceph['I'], FirstOvertonediskceph['P1'])
 
-print(statistics.mean(star_dist_accuracy(Fundamentalblgceph['modeldist'], Fundamentalblgceph['truedist'])))
-print(statistics.mean(star_dist_accuracy(FirstOvertoneblgceph['modeldist'], FirstOvertoneblgceph['truedist'])))
-print(statistics.mean(star_dist_accuracy(Fundamentaldiskceph['modeldist'], Fundamentaldiskceph['truedist'])))
-print(statistics.mean(star_dist_accuracy(FirstOvertonediskceph['modeldist'], FirstOvertonediskceph['truedist'])))
+print(statistics.mean(star_dist_accuracy(Fundamentalblgceph['modeldist'], Fundamentalblgceph['Distance'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertoneblgceph['modeldist'], FirstOvertoneblgceph['Distance'])))
+print(statistics.mean(star_dist_accuracy(Fundamentaldiskceph['modeldist'], Fundamentaldiskceph['Distance'])))
+print(statistics.mean(star_dist_accuracy(FirstOvertonediskceph['modeldist'], FirstOvertonediskceph['Distance'])))
 
 ### Intergalactic Distances ###
